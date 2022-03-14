@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Products from "./pages/Products";
 import Item from "./components/Item";
 import Navbar from "./components/Navbar";
+import Cart from "./pages/Cart"
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
         <Route path="/products/:id" element={<Item />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="*" element={<Home />} />
       </Routes>
     </>

@@ -1,13 +1,20 @@
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { addItem } from "../redux/cartSlice";
 import { useParams } from "react-router";
-import { Product } from "../pages/Products";
+import { Product } from "../types/types";
 import { NavLink } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 
 function Item() {
+  const dispatch = useDispatch();
   const { id } = useParams();
   const [product, setProduct] = useState<Product>();
   const [loading, setLoading] = useState(false);
+
+  const handleAddItem = (product: Product) => {
+    dispatch(addItem(product));
+  };
 
   useEffect(() => {
     const getProduct = async () => {
@@ -41,30 +48,39 @@ function Item() {
   const ShowProduct = () => {
     return (
       <>
-        <div className="col-md-6">
-          <img
-            src={product?.image}
-            alt={product?.title}
-            height="400px"
-            width="400px"
-          />
-        </div>
-        <div className="col-md-6">
-          <h4 className="text-uppercase text-black-50">{product?.category}</h4>
-          <h1 className="display-5">{product?.title}</h1>
-          <p className="lead fw-bolder">
-            Rating: {product?.rating.rate}
-            <i className="fa fa-star" />
-          </p>
-          <h3 className="display-6 fw-bold my-4">${product?.price}</h3>
-          <p className="lead">{product?.description}</p>
-          <button className="btn btn-outline-dark px-4 py-2">
-            Add to Cart
-          </button>
-          <NavLink to="/cart" className="btn btn-dark ms-2 px-3 py-2">
-            Go to Cart
-          </NavLink>
-        </div>
+        {product ? (
+          <>
+            <div className="col-md-6">
+              <img
+                src={product.image}
+                alt={product.title}
+                height="400px"
+                width="400px"
+              />
+            </div>
+            <div className="col-md-6">
+              <h4 className="text-uppercase text-black-50">
+                {product?.category}
+              </h4>
+              <h1 className="display-5">{product.title}</h1>
+              <p className="lead fw-bolder">
+                Rating: {product?.rating.rate}
+                <i className="fa fa-star" />
+              </p>
+              <h3 className="display-6 fw-bold my-4">${product.price}</h3>
+              <p className="lead">{product.description}</p>
+              <button
+                className="btn btn-outline-dark px-4 py-2"
+                onClick={() => handleAddItem(product)}
+              >
+                Add to Cart
+              </button>
+              <NavLink to="/cart" className="btn btn-dark ms-2 px-3 py-2">
+                Go to Cart
+              </NavLink>
+            </div>
+          </>
+        ) : null}
       </>
     );
   };

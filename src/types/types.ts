@@ -17,3 +17,7 @@ export type Product = {
     count: number;
   };
 };
+
+export type User = {
+  isAuthenticated: boolean;
+};

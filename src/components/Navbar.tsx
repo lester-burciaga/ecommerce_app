@@ -1,9 +1,12 @@
 import { NavLink } from "react-router-dom";
-import { useAppSelector } from '../redux/hooks'
-
+import { useAppSelector } from "../redux/hooks";
+import Login from "./Login";
+import Signup from "./Signup";
+import Logout from "./Logout";
 
 function Navbar() {
-  const {cart} = useAppSelector((state) => state.cart);
+  const { cart } = useAppSelector((state) => state.cart);
+  const { user } = useAppSelector((state) => state.user);
 
   return (
     <div>
@@ -47,15 +50,15 @@ function Navbar() {
               </li>
             </ul>
             <div className="buttons">
-              <NavLink to="/login" className="btn btn-outline-dark">
-                <i className="fa fa-sign-in me-1"></i>Login
-              </NavLink>
-              <NavLink to="/register" className="btn btn-outline-dark ms-2">
-                <i className="fa fa-user-plus me-1"></i>Register
-              </NavLink>
-              <NavLink to="/cart" className="btn btn-outline-dark ms-2">
-                <i className="fa fa-shopping-cart me-1"></i>Cart({cart.length})
-              </NavLink>
+              {!user.isAuthenticated && <Login />}
+              {!user.isAuthenticated && <Signup />}
+              {user.isAuthenticated && <Logout />}
+              {user.isAuthenticated && (
+                <NavLink to="/cart" className="btn btn-outline-dark ms-2">
+                  <i className="fa fa-shopping-cart me-1"></i>Cart({cart.length}
+                  )
+                </NavLink>
+              )}
             </div>
           </div>
         </div>

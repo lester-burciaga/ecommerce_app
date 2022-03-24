@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import axios from "axios";
+
 import { addItem } from "../redux/cartSlice";
 import { useParams } from "react-router";
 import { Product } from "../types/types";
@@ -7,8 +9,9 @@ import { NavLink } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 
 function Item() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { id } = useParams();
+  const { user } = useAppSelector((state) => state.user);
   const [product, setProduct] = useState<Product>();
   const [loading, setLoading] = useState(false);
 
@@ -19,8 +22,10 @@ function Item() {
   useEffect(() => {
     const getProduct = async () => {
       setLoading(true);
-      const response = await fetch(`https://fakestoreapi.com/products/${id}`);
-      setProduct(await response.json());
+      const response = await axios.get(
+        `https://fakestoreapi.com/products/${id}`
+      );
+      setProduct(await response.data);
       setLoading(false);
     };
     getProduct();
@@ -69,15 +74,23 @@ function Item() {
               </p>
               <h3 className="display-6 fw-bold my-4">${product.price}</h3>
               <p className="lead">{product.description}</p>
-              <button
-                className="btn btn-outline-dark px-4 py-2"
-                onClick={() => handleAddItem(product)}
-              >
-                Add to Cart
-              </button>
-              <NavLink to="/cart" className="btn btn-dark ms-2 px-3 py-2">
-                Go to Cart
-              </NavLink>
+              {user.isAuthenticated ? (
+                <>
+                  <button
+                    className="btn btn-outline-dark px-4 py-2"
+                    onClick={() => handleAddItem(product)}
+                  >
+                    Add to Cart
+                  </button>
+                  <NavLink to="/cart" className="btn btn-dark ms-2 px-3 py-2">
+                    Go to Cart
+                  </NavLink>{" "}
+                </>
+              ) : (
+                <p className="fw-bold my-4 text-danger">
+                  *You must be logged in to add items on your cart
+                </p>
+              )}
             </div>
           </>
         ) : null}

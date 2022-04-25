@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { Product } from "../types/types";
+import { Product } from "@model/types";
 
 interface ItemList {
   items: Product[] | undefined;

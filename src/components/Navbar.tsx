@@ -1,8 +1,9 @@
 import { NavLink } from "react-router-dom";
-import { useAppSelector } from "../redux/hooks";
-import Login from "./Login";
-import Signup from "./Signup";
-import Logout from "./Logout";
+import { useAppSelector } from "@redux/hooks";
+
+import Login from "@components/Login";
+import Signup from "@components/Signup";
+import Logout from "@components/Logout";
 
 function Navbar() {
   const { cart } = useAppSelector((state) => state.cart);

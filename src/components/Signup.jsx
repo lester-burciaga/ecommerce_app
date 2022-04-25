@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { useAppDispatch } from "../redux/hooks";
 import axios from "axios";
-import { login } from "../redux/authSlice";
+
+import { useAppDispatch } from "@redux/hooks";
+import { login } from "@redux/authSlice";
 import { Button, Modal } from "react-bootstrap";
 
 const Signup = () => {

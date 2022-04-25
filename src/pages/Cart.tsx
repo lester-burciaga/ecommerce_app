@@ -1,6 +1,6 @@
-import { useAppSelector, useAppDispatch } from "../redux/hooks";
-import { addItem, deleteItem } from "../redux/cartSlice";
-import { Product } from "../types/types";
+import { useAppSelector, useAppDispatch } from "@redux/hooks";
+import { addItem, deleteItem } from "@redux/cartSlice";
+import { Product } from "@model/types";
 
 function Cart() {
   const { cart } = useAppSelector((state) => state.cart);

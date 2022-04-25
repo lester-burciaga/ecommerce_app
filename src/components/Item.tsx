@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { useAppDispatch, useAppSelector } from "@redux/hooks";
 import axios from "axios";
 
-import { addItem } from "../redux/cartSlice";
+import { addItem } from "@redux/cartSlice";
 import { useParams } from "react-router";
-import { Product } from "../types/types";
+import { Product } from "@model/types"
 import { NavLink } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 

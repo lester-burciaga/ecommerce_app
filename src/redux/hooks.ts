@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import type { RootState, AppDispatch } from "./store";
 
-import { Category, Product, User } from "../types/types";
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import type { RootState, AppDispatch } from "@redux/store";
+
+import { Category, Product } from "@model/types";
 
 export const useFetchItems = (url = "") => {
   const [data, setData] = useState<Product[]>([]);

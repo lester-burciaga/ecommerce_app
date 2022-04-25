@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import Skeleton from "react-loading-skeleton";
-import { useFetchItems, useFetchCategories } from "../redux/hooks";
-import { Product } from "../types/types";
-import ProductsList from "../components/ProductsList";
+
+import { useFetchItems, useFetchCategories } from "@redux/hooks";
+import { Product } from "@model/types";
+import ProductsList from "@components/ProductsList";
 
 function Products() {
   const { data, loadingItems } = useFetchItems();

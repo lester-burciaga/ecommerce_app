@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import type { RootState } from "./store";
-import { User } from "../types/types";
+import type { RootState } from "@redux/store";
+import { User } from "@model/types";
 
 interface UserState {
   user: User;

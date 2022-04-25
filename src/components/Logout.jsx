@@ -1,6 +1,7 @@
-import { useAppDispatch } from "../redux/hooks";
 import { useNavigate } from "react-router-dom";
-import { logout } from "../redux/authSlice";
+
+import { useAppDispatch } from "@redux/hooks";
+import { logout } from "@redux/authSlice";
 import Button from "react-bootstrap/Button";
 
 const Logout = () => {

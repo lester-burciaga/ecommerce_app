@@ -1,6 +1,8 @@
 import Skeleton from "react-loading-skeleton";
-import { useFetchItems } from "../redux/hooks";
-import ProductsList from "../components/ProductsList";
+import { useFetchItems } from "@redux/hooks";
+import ProductsList from "@components/ProductsList";
+
+import HomeBg from "@images/home.png";
 
 function Home() {
   const { data, loadingItems } = useFetchItems("?limit=8");
@@ -19,7 +21,7 @@ function Home() {
     <div className="hero">
       <div className="card bg-dark text-white border-0">
         <img
-          src="/assets/bg.png"
+          src={HomeBg}
           className="card-img"
           alt="background"
           height="550px"

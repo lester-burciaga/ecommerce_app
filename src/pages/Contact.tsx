@@ -1,3 +1,5 @@
+import ContactImage from "@images/contact.png"
+
 const Contact = () => {
   return (
     <>
@@ -13,7 +15,7 @@ const Contact = () => {
         <div className="row">
           <div className="col-md-5 d-flex justify-content-center">
             <img
-              src="/assets/contact.png"
+              src={ContactImage}
               alt="Contact Us"
               height="300px"
               width="300px"

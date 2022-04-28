@@ -17,7 +17,7 @@ const About = () => {
               electronic typesetting, remaining essentially unchanged.
             </p>
             <NavLink to="/contact" className="btn btn-outline-primary px-3">
-              Cantact Us
+              Contact Us
             </NavLink>
           </div>
           <div className="col-md-6 d-flex justify-content-center">

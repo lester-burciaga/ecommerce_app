@@ -55,11 +55,12 @@ const Contact = () => {
                 <textarea
                   className="form-control"
                   id="exampleFormControlTextarea1"
+                  aria-label="Example textarea"
                   rows={3}
                 ></textarea>
               </div>
               <button type="submit" className="btn btn-outline-primary">
-                Send MEssage
+                Send Message
               </button>
             </form>
           </div>
